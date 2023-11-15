@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-class  LoginPage extends StatelessWidget {
+class   ShowPages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +11,29 @@ class  LoginPage extends StatelessWidget {
         title: Text('PROYECTA'),
       ),
       body: Center(
-        child: Text('Hola Mundo'),
+        child: ElevatedButton(
+          onPressed: () async {
+            await signOut(context);
+          },
+          child: Text('Cerrar Sesión'),
+        )
       ),
     );
   }
+
+  Future<void> signOut(BuildContext context) async {
+    try {
+      await GoogleSignIn().signOut(); // Cierra la sesión en Google
+      await FirebaseAuth.instance.signOut(); // Cierra la sesión en Firebase
+
+      Navigator.of(context).pushReplacementNamed('/home');
+    } catch (e) {
+      print('Error al cerrar sesión: $e');
+    }
+  }
+
+
+
+
+
 }

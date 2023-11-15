@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyecta/src/presentation/pages/auth/login/login_page.dart';
+import 'package:proyecta/src/presentation/pages/home/proyects/show/show_page.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -14,13 +15,16 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: LoginPage(), // Usando el nuevo widget aquí
+      home: LoginPage(),
+      routes: {
+        '/home': (context) => LoginPage(),
+        '/proyects': (context) => ShowPages(),
+      },
     );
   }
 }
