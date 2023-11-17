@@ -1,10 +1,8 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import '../../home/proyects/show/show_page.dart';
 
 class  LoginPage extends StatelessWidget {
@@ -12,14 +10,57 @@ class  LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFCCDCE4),
       appBar: AppBar(
         title: Text('PROYECTA'),
       ),
       body: Center(
-        child: BotonesGoogle(context),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Iconoproyecto(),
+            TextoInicio(),
+            BotonesGoogle(context),
+          ],
+        ),
       ),
     );
   }
+
+  Widget Iconoproyecto(){
+    return Column(
+      children: [
+        Image.asset('assets/img/Iconoproyecto.png'), // Imagen agregada aquí
+        SizedBox(height: 20), // Espacio entre imagen y botón
+      ],
+    );
+  }
+  Widget TextoInicio(){
+    return Column(
+      children: [
+        Text(
+          'PROYECTA',
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        Text(
+          'Gestión De Objetivos',
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: Colors.blue,
+          ),
+        ),
+        SizedBox(height: 20), // Espacio entre imagen y botón
+      ],
+    );
+  }
+
+
+
 
   Widget BotonesGoogle(BuildContext context){
     return Column(
@@ -38,6 +79,7 @@ class  LoginPage extends StatelessWidget {
                 print('Error');
               }
             },
+
           ),
         ]
     );
@@ -62,6 +104,7 @@ class  LoginPage extends StatelessWidget {
       return null;
     }
   }
+
 
 
 
