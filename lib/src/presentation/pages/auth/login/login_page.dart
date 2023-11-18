@@ -2,24 +2,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import '../../home/proyects/show/show_page.dart';
+import 'login_viewmodel.dart';
 
 class  LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color(0xFFCCDCE4),
-      appBar: AppBar(
-        title: Text('PROYECTA'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Iconoproyecto(),
-            TextoInicio(),
+            Container(
+                margin: EdgeInsets.only(bottom: 70),
+                child: IconoPortada(context)),
             BotonesGoogle(context),
           ],
         ),
@@ -27,11 +26,27 @@ class  LoginPage extends StatelessWidget {
     );
   }
 
-  Widget Iconoproyecto(){
+
+  Widget IconoPortada(context){
     return Column(
+
       children: [
-        Image.asset('assets/img/Iconoproyecto.png'), // Imagen agregada aquí
-        SizedBox(height: 20), // Espacio entre imagen y botón
+        Iconoproyecto(context),
+        TextoInicio(),
+      ],
+    );
+  }
+
+  Widget Iconoproyecto(context){
+    var screenSize = MediaQuery.of(context).size;
+    return Column(
+
+      children: [
+        Image.asset(
+            'assets/img/Iconoproyecto.png',
+             width:  screenSize.width * 0.5,
+        ),
+        SizedBox(height: 0), // Espacio entre imagen y botón
       ],
     );
   }
@@ -41,7 +56,7 @@ class  LoginPage extends StatelessWidget {
         Text(
           'PROYECTA',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 40,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -49,8 +64,7 @@ class  LoginPage extends StatelessWidget {
         Text(
           'Gestión De Objetivos',
           style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
+            fontSize: 17,
             color: Colors.blue,
           ),
         ),
@@ -84,26 +98,7 @@ class  LoginPage extends StatelessWidget {
         ]
     );
   }
-  Future<UserCredential?> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) {
-        print('Inicio de sesión cancelado por el usuario');
-        return null;
-      }
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      return await FirebaseAuth.instance.signInWithCredential(credential);
-    } catch (e) {
-      print('Error en el inicio de sesión con Google: $e');
-      return null;
-    }
-  }
 
 
 
