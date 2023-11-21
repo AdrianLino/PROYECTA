@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import '../../home/proyects/show/show_page.dart';
 import 'login_viewmodel.dart';
 
 class  LoginPage extends StatelessWidget {
@@ -82,16 +81,7 @@ class  LoginPage extends StatelessWidget {
           SignInButton(
             Buttons.Google,
             onPressed: () async {
-              await signInWithGoogle();
-              if(FirebaseAuth.instance.currentUser != null){
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => ShowPages()),
-                        (Route<dynamic> route) => false
-                );
-              }else{
-                print('Error');
-              }
+
             },
 
           ),
