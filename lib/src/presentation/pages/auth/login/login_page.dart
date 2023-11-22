@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
+import 'package:proyecta/src/presentation/pages/new_proyect/list_proyect.dart';
 import 'login_viewmodel.dart';
 
 class  LoginPage extends StatelessWidget {
@@ -19,6 +20,20 @@ class  LoginPage extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 70),
                 child: IconoPortada(context)),
             BotonesGoogle(context),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => L_Proyect())
+                );
+              },
+              child: Text(
+                "Ir a L_Proyect"
+              )
+            )
           ],
         ),
       ),
