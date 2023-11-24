@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:proyecta/src/presentation/pages/auth/login/login_page.dart';
 import 'package:proyecta/src/presentation/pages/new_proyect/wingets_new_P/navigation_bar.dart';
 
-class B_Proyect extends StatelessWidget {
-  const B_Proyect({super.key});
+class Contenedores extends StatelessWidget {
+  const Contenedores({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +12,6 @@ class B_Proyect extends StatelessWidget {
         children: [
           const Padding(padding: EdgeInsets.all(9)),
           N_bar(),
-          const Divider(
-            height: 10,
-            thickness: 2,
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
           Row(
             children: [
               Expanded(

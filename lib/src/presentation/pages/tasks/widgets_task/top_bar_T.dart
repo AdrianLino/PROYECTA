@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-class T_bar extends StatelessWidget {
-  const T_bar({super.key});
+class T_bar_T extends StatelessWidget implements PreferredSizeWidget {
+  const T_bar_T({super.key});
 
   @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        onPressed: (){
+        onPressed: () {
           Navigator.pop(context);
-        }, 
-        icon: const Icon(
-          Icons.arrow_back
-        ),
+        },
+        icon: const Icon(Icons.arrow_back),
       ),
       title: const Column(
         children: [
@@ -20,10 +19,9 @@ class T_bar extends StatelessWidget {
             child: Text(
               "Lista de Proyectos",
               style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                color: Colors.white
-              ),
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
             ),
           ),
         ],
@@ -38,8 +36,14 @@ class T_bar extends StatelessWidget {
           ),
         )
       ],
-      backgroundColor: Color(0xfff2f1c42),
-      elevation: 0,
+      flexibleSpace: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(colors: [
+            Color(0xFF5DE0E6),
+            Color(0xFF004AAD),
+          ]),
+        ),
+      ),
     );
   }
 }
