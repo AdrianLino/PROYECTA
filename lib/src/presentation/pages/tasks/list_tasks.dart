@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:proyecta/src/presentation/pages/messenger/delete.dart';
 import 'package:proyecta/src/presentation/pages/tasks/widgets_task/complete.dart';
 import 'package:proyecta/src/presentation/pages/tasks/widgets_task/fl_chart_T.dart';
 import 'package:proyecta/src/presentation/pages/tasks/widgets_task/top_bar_T.dart';
-import 'package:proyecta/src/presentation/pages/auth/login/login_page.dart';
 
 class L_tasks extends StatelessWidget {
   const L_tasks({super.key});
@@ -44,7 +44,7 @@ class L_tasks extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
+                  MaterialPageRoute(builder: (context) => M_delete()),
                 );
               },
               style: ElevatedButton.styleFrom(
